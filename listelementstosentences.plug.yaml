@@ -1,6 +1,7 @@
-name: hello
+name: listelementstosentences
 functions:
-  helloWorld:
-    path: hello.ts:helloWorld
+  listElementsToSentences:
+    path: listelementstosentences.ts:listElementsToSentences
     command:
-      name: "Say hello"
+      name: "Copy list elements as sentences to clipboard"
+      key: "Alt-p"
