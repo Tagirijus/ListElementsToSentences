@@ -27,7 +27,7 @@ SilverBullet will automatically sync and load the new version of the plug, just 
 If you would like to install this plug straight from Github, make sure you have the `.js` file committed to the repo and simply add
 
 ```
-- github:Tagiriju/ListElementsToSentences/listelementstosentences.plug.js
+- github:Tagirijus/ListElementsToSentences/listelementstosentences.plug.js
 ```
 
 to your `PLUGS` file, run `Plugs: Update` command and off you go!
