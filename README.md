@@ -1,7 +1,6 @@
+# List Elements to Sentences
 
-# SilverBullet plug template
-
-Insert your plug description here
+This plugin might be a thing for me only. It basically converts all list elements of a list, in which the cursors is and joins them with ". " and puts them into the clipboard.
 
 ## Build
 To build this plug, make sure you have [SilverBullet installed with Deno](https://silverbullet.md/Install/Deno). Then, build the plug with:
@@ -28,7 +27,7 @@ SilverBullet will automatically sync and load the new version of the plug, just 
 If you would like to install this plug straight from Github, make sure you have the `.js` file committed to the repo and simply add
 
 ```
-- github:user/plugname/plugname.plug.js
+- github:Tagiriju/ListElementsToSentences/listelementstosentences.plug.js
 ```
 
 to your `PLUGS` file, run `Plugs: Update` command and off you go!
