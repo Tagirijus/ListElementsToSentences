@@ -59,3 +59,24 @@ export async function listElementsToSentences() {
   await editor.copyToClipboard(sentences);
   await editor.flashNotification("Copied list as sentences to clipboard!", "info");
 }
+
+
+export async function sentencesToListElements() {
+  const selection = await editor.getSelection();
+  if (!selection) return;
+
+  const content = await editor.getText();
+  const selectedText = content.slice(selection.from, selection.to);
+  console.log(selectedText);
+
+  // Split selected text into sentences (assuming basic punctuation rules)
+  let sentences = selectedText.match(/[^.!?]+[.!?]*/g) || [];
+
+  // Trim whitespace and format as list items
+  let listItems = sentences.map(sentence => "- " + sentence.trim());
+
+  let listText = listItems.join("\n");
+
+  await editor.copyToClipboard(listText);
+  await editor.flashNotification("Converted sentences to list!", "info");
+}

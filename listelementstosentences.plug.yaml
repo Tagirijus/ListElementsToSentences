@@ -5,3 +5,8 @@ functions:
     command:
       name: "Copy list elements as sentences to clipboard"
       key: "Alt-p"
+  sentencesToListElements:
+    path: listelementstosentences.ts:sentencesToListElements
+    command:
+      name: "Copy sentences as list elements to clipboard"
+      key: "Ctrl-Alt-p"
