@@ -67,7 +67,6 @@ export async function sentencesToListElements() {
 
   const content = await editor.getText();
   const selectedText = content.slice(selection.from, selection.to);
-  console.log(selectedText);
 
   // Split selected text into sentences (assuming basic punctuation rules)
   let sentences = selectedText.match(/[^.!?]+[.!?]*/g) || [];
