@@ -9,4 +9,9 @@ functions:
     path: listelementstosentences.ts:sentencesToListElements
     command:
       name: "Copy sentences as list elements to clipboard"
+      key: "Ctrl-Shift-p"
+  sentencesToSynopsis:
+    path: listelementstosentences.ts:sentencesToSynopsis
+    command:
+      name: "Copy sentences as sentences '=' and newlines to clipboard (for Founrtain Script)"
       key: "Ctrl-Alt-p"

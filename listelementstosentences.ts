@@ -61,9 +61,9 @@ export async function listElementsToSentences() {
 }
 
 
-export async function sentencesToListElements() {
+async function sentencesFromSelection() {
   const selection = await editor.getSelection();
-  if (!selection) return;
+  if (!selection) return false;
 
   const content = await editor.getText();
   const selectedText = content.slice(selection.from, selection.to);
@@ -76,7 +76,13 @@ export async function sentencesToListElements() {
     `(?<!\\b(?:${abbrevPattern}))(?<=[.!?])\\s+(?=[A-ZÄÖÜ])`,
     "g"
   );
-  const sentences = selectedText.split(sentenceSplitRegex);
+  return selectedText.split(sentenceSplitRegex);
+}
+
+
+export async function sentencesToListElements() {
+  const sentences = await sentencesFromSelection();
+  if (!sentences) return;
 
   // Trim whitespace and format as list items
   let listItems = sentences.map(sentence => "- " + sentence.trim());
@@ -85,4 +91,18 @@ export async function sentencesToListElements() {
 
   await editor.copyToClipboard(listText);
   await editor.flashNotification("Converted sentences to list!", "info");
+}
+
+
+export async function sentencesToSynopsis() {
+  const sentences = await sentencesFromSelection();
+  if (!sentences) return;
+
+  // Trim whitespace and format as list items
+  let listItems = sentences.map(sentence => "=" + sentence.trim());
+
+  let listText = listItems.join("\n\n");
+
+  await editor.copyToClipboard(listText);
+  await editor.flashNotification("Converted sentences to Fountain synopsises!", "info");
 }
