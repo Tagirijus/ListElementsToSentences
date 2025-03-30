@@ -69,7 +69,14 @@ export async function sentencesToListElements() {
   const selectedText = content.slice(selection.from, selection.to);
 
   // Split selected text into sentences (assuming basic punctuation rules)
-  let sentences = selectedText.match(/[^.!?]+[.!?]*/g) || [];
+  // let sentences = selectedText.match(/[^.!?]+[.!?]*/g) || [];
+  const abbreviations = ["z\\.B", "u\\.a", "d\\.h", "usw", "e\\.g", "i\\.e"];
+  const abbrevPattern = abbreviations.join("|");
+  const sentenceSplitRegex = new RegExp(
+    `(?<!\\b(?:${abbrevPattern}))(?<=[.!?])\\s+(?=[A-ZÄÖÜ])`,
+    "g"
+  );
+  const sentences = selectedText.split(sentenceSplitRegex);
 
   // Trim whitespace and format as list items
   let listItems = sentences.map(sentence => "- " + sentence.trim());
